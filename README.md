@@ -1,6 +1,7 @@
 # UltimateBotEU
 
-The ultimate twitch bot.
+The ultimate twitch bot.  
+Initially started to have a bot for the streamer [rezo](twitch.tv/rezo).
 
 ## Features
 
@@ -16,6 +17,10 @@ Use **docker** to install and deploy the bot. If you are not familiar with docke
 To deploy the bot you need **docker-compose**.
 
 Download the docker-compose.yml. Update the environment variables: Please fill in secure passwords and update the twitch client credentials. Run it with `docker-compose up -d` if you're in the same folder as the compose file.
+
+## Dependencies
+
+This bot uses the twurple javascript twitch api. You can find more information about that [here](https://twurple.js.org/).
 
 ## Copyright and license
 
