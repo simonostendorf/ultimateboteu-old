@@ -22,8 +22,9 @@ Download the docker-compose.yml. Update the environment variables: Please fill i
 
 This bot uses the twurple javascript twitch api. You can find more information about that [here](https://twurple.js.org/).
 
+To run the bot you need a running instance of [mariadb](https://mariadb.org/) and [redis](https://redis.io/). Inside the docker-compose file everything will be set up.
+
 ## Copyright and license
 
 Licensed under [MIT](https://choosealicense.com/licenses/mit/).  
-Please do not share this bot in other ways.  
 © 2022 by Simon Ostendorf. All rights reserved.
