@@ -1,0 +1,9 @@
+dist
+node_modules
+.env
+package-lock.json
+TODO.txt
+getToken.txt
+Dockerfile
+docker-compose.yml
+.gitignore

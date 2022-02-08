@@ -1,0 +1,57 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    restart: unless-stopped
+    volumes:
+      - ultimateboteu-mariadb:/var/lib/mysql
+    networks:
+      - ultimateboteu
+    environment:
+      MARIADB_ROOT_PASSWORD: PleaseUseRandomString
+      MARIADB_DATABASE: ultimateboteu
+      MARIADB_USER: ultimateboteu
+      MARIADB_PASSWORD: PleaseUseRandomString
+  cache:
+    image: redis
+    restart: unless-stopped
+    command: redis-server --requirepass PleaseUseRandomString
+    volumes:
+      - ultimateboteu-redis:/data
+    networks:
+      - ultimateboteu
+  bot:
+    image: ghcr.io/simonostendorf/ultimateboteu
+    restart: unless-stopped
+    networks:
+      - ultimateboteu
+    environment:
+      DEBUG: false
+      CACHE_TWITCH_ID: 1800000
+      CACHE_STREAM_ID: 60000
+      CACHE_FFZ_EMOTES: 1800000
+      CACHE_BTTV_EMOTES: 1800000
+      TWITCH_CHANNEL_NAMES: simonostendorf
+      TWITCH_COMMAND_COOLDOWN: 10000
+      TWITCH_CLIENT_ID: GetFromDeveloperConsole
+      TWITCH_CLIENT_SECRET: GetFromDeveloperConsole
+      TWITCH_USER_ID: 00000000
+      TWITCH_EVENTSUB_URI: api.example.com
+      TWITCH_EVENTSUB_SECRET: PleaseUseRandomString
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ultimateboteu
+      DB_USERNAME: ultimateboteu
+      DB_PASSWORD: PleaseUseRandomString
+      REDIS_HOST: cache
+      REDIS_PORT: 6379
+      REDIS_USERNAME: 
+      REDIS_PASSWORD: PleaseUseRandomString
+
+volumes:
+  ultimateboteu-mariadb:
+  ultimateboteu-redis:
+
+networks:
+  ultimateboteu:
