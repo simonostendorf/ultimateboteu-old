@@ -46,10 +46,10 @@ export default class Cache {
 
   static BTTVEmotes = class {
     public static isSetup(broadcasterId: string): boolean {
-      if (!bttvEmotes.has(broadcasterId)) {
-        return false;
+      if (bttvEmotes.has(broadcasterId) && bttvEmotes.get(broadcasterId)?.get('TIMER')) {
+        return true;
       }
-      return true;
+      return false;
     }
     public static async get(broadcasterId: string, emoteName: string): Promise<string | undefined> {
       if (this.isSetup(broadcasterId)) {
@@ -67,10 +67,10 @@ export default class Cache {
 
   static FFZEmotes = class {
     public static isSetup(broadcasterId: string): boolean {
-      if (!ffzEmotes.has(broadcasterId)) {
-        return false;
+      if (ffzEmotes.has(broadcasterId) && ffzEmotes.get(broadcasterId)?.get('TIMER')) {
+        return true;
       }
-      return true;
+      return false;
     }
     public static async get(broadcasterId: string, emoteName: string): Promise<string | undefined> {
       if (this.isSetup(broadcasterId)) {

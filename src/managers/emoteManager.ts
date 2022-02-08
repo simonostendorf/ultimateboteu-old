@@ -42,6 +42,7 @@ async function isBTTVEmote(broadcasterId: string, message: string): Promise<stri
         logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Found BBTV emote ' + emote.code + ' from broadcaster ' + broadcasterId);
       }
     }
+    Cache.BTTVEmotes.set(broadcasterId, 'TIMER', 'value', Environment.Cache.BTTV_EMOTES);
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Got BTTV emotes from broadcaster ' + broadcasterId + ' from the bttv api and saved it to the cache.');
   } else {
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Read BTTV emotes from broadcaster ' + broadcasterId + ' from the cache.');
@@ -65,6 +66,7 @@ async function isFFZEmote(broadcasterId: string, message: string): Promise<strin
         }
       }
     }
+    Cache.FFZEmotes.set(broadcasterId, 'TIMER', 'value', Environment.Cache.FFZ_EMOTES);
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Got FFZ emotes from broadcaster ' + broadcasterId + ' from the ffz api and saved it to the cache.');
   } else {
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Read FFZ emotes from broadcaster ' + broadcasterId + ' from the cache.');
