@@ -1,7 +1,7 @@
 # UltimateBotEU
 
 The ultimate twitch bot.  
-Initially started to have a bot for the streamer [rezo](twitch.tv/rezo).
+Initially started to have a bot for the streamer [rezo](https://twitch.tv/rezo).
 
 ## Features
 
