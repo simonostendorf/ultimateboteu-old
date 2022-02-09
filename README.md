@@ -1,5 +1,8 @@
 # UltimateBotEU
 
+[![GitHub](https://img.shields.io/github/license/simonostendorf/ultimateboteu)](https://github.com/simonostendorf/ultimateboteu/LICENSE)
+[![CI](https://github.com/simonostendorf/ultimateboteu/actions/workflows/node.js.yml/badge.svg)](https://github.com/simonostendorf/ultimateboteu/actions/workflows/node.js.yml)
+
 The ultimate twitch bot.  
 Initially started to have a bot for the streamer [rezo](https://twitch.tv/rezo).
 
