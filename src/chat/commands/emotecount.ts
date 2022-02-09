@@ -18,7 +18,7 @@ export async function handle(channelname: string, username: string, message: str
   if (msg.channelId != null) {
     if (!await Cache.EmoteCountCommandCooldown.get(msg.userInfo.userId)) {
       if (message.split(' ').length == 4) {
-        const emoteProvider: EmoteType = (<any>EmoteType)[message.split(' ')[1]];
+        const emoteProvider: EmoteType = (<any>EmoteType)[message.split(' ')[1].toUpperCase()];
         if (!emoteProvider) {
           getChatClient().say(channelname, 'Der Emote-Anbieter ' + message.split(' ')[1] + ' konnte nicht gefunden werden.', { replyTo: msg });
           return;
