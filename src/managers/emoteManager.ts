@@ -26,7 +26,7 @@ async function callAPI(url: string): Promise<string | null> {
 }
 
 async function isBTTVEmote(broadcasterId: string, message: string): Promise<string | undefined> {
-  if (!Cache.BTTVEmotes.isSetup(broadcasterId)) {
+  if (!await Cache.BTTVEmotes.isSetup(broadcasterId)) {
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'BTTV emote names from broadcaster ' + broadcasterId + ' not found inside the cache. Getting it from the bttv api...');
     const emoteNames = await callAPI('https://api.betterttv.net/3/cached/users/twitch/' + broadcasterId);
     if (!emoteNames) {
@@ -34,15 +34,15 @@ async function isBTTVEmote(broadcasterId: string, message: string): Promise<stri
     } else {
       const json = JSON.parse(JSON.stringify(emoteNames));
       for (let emote of json.channelEmotes) {
-        Cache.BTTVEmotes.set(broadcasterId, emote.code, emote.id, Environment.Cache.BTTV_EMOTES);
+        await Cache.BTTVEmotes.set(broadcasterId, emote.code, emote.id, Environment.Cache.BTTV_EMOTES);
         logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Found BBTV emote ' + emote.code + ' from broadcaster ' + broadcasterId);
       }
       for (let emote of json.sharedEmotes) {
-        Cache.BTTVEmotes.set(broadcasterId, emote.code, emote.id, Environment.Cache.BTTV_EMOTES);
+        await Cache.BTTVEmotes.set(broadcasterId, emote.code, emote.id, Environment.Cache.BTTV_EMOTES);
         logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Found BBTV emote ' + emote.code + ' from broadcaster ' + broadcasterId);
       }
     }
-    Cache.BTTVEmotes.set(broadcasterId, 'TIMER', 'value', Environment.Cache.BTTV_EMOTES);
+    await Cache.BTTVEmotes.set(broadcasterId, 'TIMER', 'value', Environment.Cache.BTTV_EMOTES);
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Got BTTV emotes from broadcaster ' + broadcasterId + ' from the bttv api and saved it to the cache.');
   } else {
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Read BTTV emotes from broadcaster ' + broadcasterId + ' from the cache.');
@@ -51,7 +51,7 @@ async function isBTTVEmote(broadcasterId: string, message: string): Promise<stri
 }
 
 async function isFFZEmote(broadcasterId: string, message: string): Promise<string | undefined> {
-  if (!Cache.FFZEmotes.isSetup(broadcasterId)) {
+  if (!await Cache.FFZEmotes.isSetup(broadcasterId)) {
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'FFZ emote names from broadcaster ' + broadcasterId + ' not found inside the cache. Getting it from the ffz api...');
     const emoteNames = await callAPI('https://api.frankerfacez.com/v1/room/id/' + broadcasterId);
     if (!emoteNames) {
@@ -61,12 +61,12 @@ async function isFFZEmote(broadcasterId: string, message: string): Promise<strin
       for (let ffzSet of Object.keys(json.sets)) {
         logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Found FFZ emote set ' + ffzSet + ' from broadcaster ' + broadcasterId);
         for (let emote of json.sets[ffzSet].emoticons) {
-          Cache.FFZEmotes.set(broadcasterId, emote.name, emote.id, Environment.Cache.FFZ_EMOTES);
+          await Cache.FFZEmotes.set(broadcasterId, emote.name, emote.id, Environment.Cache.FFZ_EMOTES);
           logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Found FFZ emote ' + emote.name + ' from broadcaster ' + broadcasterId);
         }
       }
     }
-    Cache.FFZEmotes.set(broadcasterId, 'TIMER', 'value', Environment.Cache.FFZ_EMOTES);
+    await Cache.FFZEmotes.set(broadcasterId, 'TIMER', 'value', Environment.Cache.FFZ_EMOTES);
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Got FFZ emotes from broadcaster ' + broadcasterId + ' from the ffz api and saved it to the cache.');
   } else {
     logger.log(logger.LogMessageType.DEBUG, logger.LogService.TWITCH, 'Read FFZ emotes from broadcaster ' + broadcasterId + ' from the cache.');

@@ -45,20 +45,20 @@ export default class Cache {
   };
 
   static BTTVEmotes = class {
-    public static isSetup(broadcasterId: string): boolean {
-      if (bttvEmotes.has(broadcasterId) && bttvEmotes.get(broadcasterId)?.get('TIMER')) {
+    public static async isSetup(broadcasterId: string): Promise<boolean> {
+      if (bttvEmotes.has(broadcasterId) && await bttvEmotes.get(broadcasterId)?.get('TIMER')) {
         return true;
       }
       return false;
     }
     public static async get(broadcasterId: string, emoteName: string): Promise<string | undefined> {
-      if (this.isSetup(broadcasterId)) {
+      if (await this.isSetup(broadcasterId)) {
         return bttvEmotes.get(broadcasterId)?.get(emoteName);
       }
       return undefined;
     }
-    public static set(broadcasterId: string, emoteName: string, emoteId: string, milliseconds: number): Promise<true> | undefined {
-      if (!this.isSetup(broadcasterId)) {
+    public static async set(broadcasterId: string, emoteName: string, emoteId: string, milliseconds: number): Promise<true | undefined> {
+      if (!await this.isSetup(broadcasterId)) {
         bttvEmotes.set(broadcasterId, new Keyv({ store: keyvRedis, namespace: 'BTTV_' + broadcasterId }));
       }
       return bttvEmotes.get(broadcasterId)?.set(emoteName, emoteId, milliseconds);
@@ -66,20 +66,20 @@ export default class Cache {
   };
 
   static FFZEmotes = class {
-    public static isSetup(broadcasterId: string): boolean {
-      if (ffzEmotes.has(broadcasterId) && ffzEmotes.get(broadcasterId)?.get('TIMER')) {
+    public static async isSetup(broadcasterId: string): Promise<boolean> {
+      if (ffzEmotes.has(broadcasterId) && await ffzEmotes.get(broadcasterId)?.get('TIMER')) {
         return true;
       }
       return false;
     }
     public static async get(broadcasterId: string, emoteName: string): Promise<string | undefined> {
-      if (this.isSetup(broadcasterId)) {
+      if (await this.isSetup(broadcasterId)) {
         return ffzEmotes.get(broadcasterId)?.get(emoteName);
       }
       return undefined;
     }
-    public static set(broadcasterId: string, emoteName: string, emoteId: string, milliseconds: number): Promise<true> | undefined {
-      if (!this.isSetup(broadcasterId)) {
+    public static async set(broadcasterId: string, emoteName: string, emoteId: string, milliseconds: number): Promise<true | undefined> {
+      if (!await this.isSetup(broadcasterId)) {
         ffzEmotes.set(broadcasterId, new Keyv({ store: keyvRedis, namespace: 'FFZ_' + broadcasterId }));
       }
       return ffzEmotes.get(broadcasterId)?.set(emoteName, emoteId, milliseconds);
