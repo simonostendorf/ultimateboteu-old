@@ -13,6 +13,12 @@
   },
   "keywords": [],
   "author": "Simon Ostendorf",
+  "homepage": "https://github.com/simonostendorf/ultimateboteu",
+  "bugs": {
+    "url": "https://github.com/simonostendorf/ultimateboteu/issues",
+    "email": "issues@ultimate-bot.eu"
+  },
+  "repository": "https://github.com/simonostendorf/ultimateboteu",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.11.0",
