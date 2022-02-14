@@ -1,14 +1,14 @@
 let startTime = 0;
 
 export function millisToString(millis: number, printMillis: boolean): string {
-  let seconds = millis / 1000;
-  millis = millis % 1000;
-  let minutes = seconds / 60;
-  seconds = seconds % 60;
-  let hours = minutes / 60;
-  minutes = minutes % 60;
-  let days = hours / 24;
-  hours = hours % 24;
+  let seconds = Math.floor(millis / 1000);
+  millis = Math.ceil(millis % 1000);
+  let minutes = Math.floor(seconds / 60);
+  seconds = Math.ceil(seconds % 60);
+  let hours = Math.floor(minutes / 60);
+  minutes = Math.ceil(minutes % 60);
+  let days = Math.floor(hours / 24);
+  hours = Math.ceil(hours % 24);
 
   let output = '';
 
