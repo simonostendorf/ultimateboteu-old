@@ -67,7 +67,7 @@ export async function createTables() {
     + 'broadcasterId INT NOT NULL,'
     + 'userId INT NOT NULL,'
     + 'streamId BIGINT DEFAULT NULL,'
-    + 'message VARCHAR(200) NOT NULL,'
+    + 'message TEXT NOT NULL,'
     + 'created_at TIMESTAMP NOT NULL DEFAULT NOW(),'
     + 'PRIMARY KEY (id)'
     + ');');

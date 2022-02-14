@@ -25,7 +25,7 @@ export async function addStreamData(streamId: string | null, title: string, game
 }
 
 async function addStreamDataViewers(broadcasterId: string, streamId: string, viewers: number) {
-  const result = await execute('SELECT title, gameId FROM streamData WHERE streamId = ? LIMIT 1;', [streamId]);
+  const result = await execute('SELECT title, gameId FROM streamData WHERE streamId = ? ORDER BY id DESC LIMIT 1;', [streamId]);
   if (result.length == 1) {
     await addStreamData(streamId, result[0].title, result[0].gameId, viewers);
   } else {
