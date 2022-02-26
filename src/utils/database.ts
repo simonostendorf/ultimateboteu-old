@@ -10,7 +10,7 @@ const pool = mariadb.createPool({
   database: Environment.Database.DATABASE,
   user: Environment.Database.USERNAME,
   password: Environment.Database.PASSWORD,
-  connectionLimit: 3,
+  connectionLimit: 10,
   connectTimeout: 8000,
 });
 
