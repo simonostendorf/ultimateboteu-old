@@ -37,7 +37,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
-    "@keyv/redis": "^2.2.3",
+    "@keyv/redis": "^2.3.3",
     "@twurple/api": "^5.0.18",
     "@twurple/auth": "^5.0.18",
     "@twurple/chat": "^5.0.18",
