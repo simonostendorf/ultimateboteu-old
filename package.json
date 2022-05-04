@@ -41,7 +41,7 @@
     "@twurple/api": "^5.0.18",
     "@twurple/auth": "^5.0.18",
     "@twurple/chat": "^5.1.6",
-    "@twurple/eventsub": "^5.0.18",
+    "@twurple/eventsub": "^5.1.6",
     "@types/keyv": "^3.1.4",
     "@types/keyv__redis": "^1.3.3",
     "axios": "^0.27.2",
