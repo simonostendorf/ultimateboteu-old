@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@keyv/redis": "^2.5.0",
-    "@twurple/api": "^5.1.6",
+    "@twurple/api": "^5.2.3",
     "@twurple/auth": "^5.2.3",
     "@twurple/chat": "^5.1.6",
     "@twurple/eventsub": "^5.2.3",
